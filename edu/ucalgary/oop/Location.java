@@ -73,7 +73,10 @@ public class Location {
 
     public void removeOccupant(DisasterVictim occupant) {
         ArrayList<DisasterVictim> list = new ArrayList<>(Arrays.asList(occupants));
-        list.remove(occupant);
+        boolean removed = list.remove(occupant);
+        if (!removed) {
+            throw new IllegalArgumentException("Occupant not found");
+        }
         occupants = list.toArray(new DisasterVictim[0]);
     }
 
@@ -87,7 +90,13 @@ public class Location {
 
     public void removeSupply(Supply inventory) {
         ArrayList<Supply> list = new ArrayList<>(Arrays.asList(supplies));
-        list.remove(inventory);
+
+        boolean removed = list.remove(inventory);
+
+        if (!removed) {
+            throw new IllegalArgumentException("Supply not found");
+        }
+
         supplies = list.toArray(new Supply[0]);
     }
 }
