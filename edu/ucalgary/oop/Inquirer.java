@@ -1,3 +1,4 @@
+package edu.ucalgary.oop;
 public class Inquirer {
     private final String FIRST_NAME;
     private final String LAST_NAME;
